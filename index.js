@@ -4,9 +4,11 @@ for(i=0;i<drum.length;i++) {
     document.querySelectorAll('.drum')[i].addEventListener("click", function (){
         let drumInnerHtml = this.innerHTML;
         sound(drumInnerHtml);
+        btnPressed(drumInnerHtml);
     });
     document.addEventListener("keydown", function (e){
         sound(e.key);
+        btnPressed(e.key);
     });
 
     function sound(key) {
@@ -43,6 +45,14 @@ for(i=0;i<drum.length;i++) {
         }
     }
 };
+
+function btnPressed(currentbtn) {
+    var activeBtn = document.querySelector("."+currentbtn);
+    activeBtn.classList.add('pressed');
+    setTimeout(function(){
+        activeBtn.classList.remove("pressed");
+    }, 100);
+}
 
 
 // var audio = new Audio("./sounds/tom-1.mp3")
